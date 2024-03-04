@@ -58,8 +58,4 @@ def get_conversation_history():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-<<<<<<< HEAD:conversation.py
     print("Application is running")
-=======
-    print("appln started")
->>>>>>> 856ff07bb29ca172dbe414f5bc10424485668e05:Conversation/conversation.py
