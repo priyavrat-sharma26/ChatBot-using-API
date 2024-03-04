@@ -1,68 +1,61 @@
-#import dependencies pymongo driver
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 from datetime import datetime
 
-#instantiate Flask
-app= Flask(__name__)
+app = Flask(__name__)
 
-#connect to mongodb
-#in order to crate a db we must provide both collection and a dummy document
-client=MongoClient("mongodb://localhost:27017/")
+# Connect to MongoDB
+client = MongoClient("mongodb://localhost:27017/")
+db = client["conversation_db"]
+collection = db["conversation_history"]
 
-Datab=client["conversation_d"]
-collection=Datab["samples"]
-
-
+# Endpoint to receive user messages and update conversation
 @app.route('/api/user_message', methods=['POST'])
 def user_message():
-    data = request.json 
-    if 'user_id' not in data or 'message' not in data:
-        return jsonify({"error": "User ID or message field missing"}), 400
-    user_id = data['user_id']
+    data = request.json
+    if 'message' not in data:
+        return jsonify({"error": "Message field missing"}), 400
     message = data['message']
     timestamp = datetime.now().isoformat()
     conversation_item = {
         'from': 'user',
-        'user_id': user_id,
         'message': message,
         'time': timestamp
     }
     try:
-        collection.insert_one(conversation_item)
+        collection.update_one({}, {'$push': {'conversation': conversation_item}}, upsert=True)
         return jsonify({"status": "Message received"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
- 
+
+# Endpoint to receive agent messages and update conversation
 @app.route('/api/agent_message', methods=['POST'])
 def agent_message():
     data = request.json
-    if 'user_id' not in data or 'message' not in data:
-        return jsonify({"error": "User ID or message field missing"}), 400
-    user_id = data['user_id']
+    if 'message' not in data:
+        return jsonify({"error": "Message field missing"}), 400
     message = data['message']
     timestamp = datetime.now().isoformat()
     conversation_item = {
         'from': 'agent',
-        'user_id': user_id,
         'message': message,
         'time': timestamp
     }
     try:
-        collection.insert_one(conversation_item)
+        collection.update_one({}, {'$push': {'conversation': conversation_item}}, upsert=True)
         return jsonify({"status": "Message received"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
- 
-@app.route('/api/conversation', methods=['GET'])
-def get_conversation():
-    user_id = request.args.get('user_id')
-    if user_id:
-        conversation = list(collection.find({'user_id': user_id}, {'_id': 0}))
-    else:
-        conversation = list(collection.find({}, {'_id': 0}))
-    return jsonify(conversation), 200
- 
+
+# Endpoint to retrieve entire conversation history
+@app.route('/api/conversation_history', methods=['GET'])
+def get_conversation_history():
+    try:
+        conversation_history = collection.find_one({}, {'_id': 0})
+        return jsonify(conversation_history), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-    print("appln started")
+    print("Application is running")

@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "72543b33-fa34-491f-b4b4-e0b54574e064",
+		"name": "Chatbot_DB_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33156688"
+	},
+	"item": [
+		{
+			"name": "user_message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/user_message",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user_message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agent_message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/agent_message",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"agent_message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "conversation_history",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/conversation_history",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"conversation_history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
