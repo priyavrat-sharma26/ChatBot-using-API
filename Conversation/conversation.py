@@ -4,12 +4,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
-db = client["conversation_db"]
-collection = db["conversation_history"]
+# MongoDB connection
+client = MongoClient('mongodb://localhost:27017/')
+db = client['conversation_db']
+collection = db['samples']
 
-# Endpoint to receive user messages and update conversation
 @app.route('/api/user_message', methods=['POST'])
 def user_message():
     data = request.json
@@ -23,12 +22,11 @@ def user_message():
         'time': timestamp
     }
     try:
-        collection.update_one({}, {'$push': {'conversation': conversation_item}}, upsert=True)
+        collection.insert_one(conversation_item)
         return jsonify({"status": "Message received"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Endpoint to receive agent messages and update conversation
 @app.route('/api/agent_message', methods=['POST'])
 def agent_message():
     data = request.json
@@ -42,20 +40,16 @@ def agent_message():
         'time': timestamp
     }
     try:
-        collection.update_one({}, {'$push': {'conversation': conversation_item}}, upsert=True)
+        collection.insert_one(conversation_item)
         return jsonify({"status": "Message received"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Endpoint to retrieve entire conversation history
-@app.route('/api/conversation_history', methods=['GET'])
-def get_conversation_history():
-    try:
-        conversation_history = collection.find_one({}, {'_id': 0})
-        return jsonify(conversation_history), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+@app.route('/api/conversation', methods=['GET'])
+def get_conversation():
+    conversation = list(collection.find({}, {'_id': 0}))
+    return jsonify(conversation), 200
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
     print("Application is running")
