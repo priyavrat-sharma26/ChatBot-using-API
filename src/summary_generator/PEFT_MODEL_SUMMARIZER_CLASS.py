@@ -1,7 +1,5 @@
 
 
-# In[4]:
-
 
 import torch
 from transformers import T5ForConditionalGeneration, T5Tokenizer
@@ -21,10 +19,3 @@ class DialogueSummarizer:
             summary_ids = self.model.generate(inputs, num_beams=4, max_length=150, early_stopping=True)
         summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         return summary
-
-
-# In[ ]:
-
-
-
-
