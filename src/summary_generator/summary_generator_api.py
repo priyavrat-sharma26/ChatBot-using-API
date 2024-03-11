@@ -6,8 +6,8 @@ from dialogue_summarizer import DialogueSummarizer
 app= Flask(__name__)
 
 #instantiate dialoguesummarizer class
-summarize= DialogueSummarizer("C:/Users/saket.singh1/Downloads/FINE_TUNNED_MODEL_WITH_PEFT")
-#summarize= DialogueSummarizer("C:/Users/saket.singh1/Downloads/fine_tuned_dialogue_summary_csv_model_T5_60rows-20240307T091913Z-001/fine_tuned_dialogue_summary_csv_model_T5_60rows")
+summarize= DialogueSummarizer("../../resources/summary/FINE_TUNNED_MODEL_WITH_PEFT")
+
 #connect to MongoDB 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['conversation_db']
