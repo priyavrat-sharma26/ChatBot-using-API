@@ -7,19 +7,19 @@ This model is designed for sentiment analysis, specifically focusing on English 
 ## Suggestion Prediction:
 The provided code serves the purpose of generating conversation suggestions based on a given message using BERT (Bidirectional Encoder Representations from Transformers) model. Here's a short description of the requirements for this code:
 
-**Transformers Library**: The code requires the transformers library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
+**Transformers Library**: The code requires the **transformers** library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
 
-NLTK Data: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data using nltk.download('punkt').
+**NLTK Data**: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data using **nltk.download('punkt')**.
 
-BertTokenizer and BertForNextSentencePrediction: The code uses the BertTokenizer to tokenize input text and BertForNextSentencePrediction model to predict the likelihood of the next sentence given two input sentences. These components are loaded from the transformers library.
+**BertTokenizer and BertForNextSentencePrediction**: The code uses the **BertTokenizer** to tokenize input text and **BertForNextSentencePrediction** model to predict the likelihood of the next sentence given two input sentences. These components are loaded from the **transformers** library.
 
-Data Source: The code requires an Excel file named sentences.xlsx containing a list of sentences. These sentences serve as potential responses or continuations in a conversation.
+**Data Source**: The code requires an Excel file named **sentences.xlsx** containing a list of sentences. These sentences serve as potential responses or continuations in a conversation.
 
-Suggestion Convo Class: The suggestion_convo class encapsulates the functionality for generating conversation suggestions. It contains methods to initialize the tokenizer and model, predict the probability of the next sentence given a message, and suggest conversations based on a given message.
+**Suggestion Convo Class**: The **suggestion_convo** class encapsulates the functionality for generating conversation suggestions. It contains methods to initialize the tokenizer and model, predict the probability of the next sentence given a message, and suggest conversations based on a given message.
 
-Flask Application: The code integrates with a Flask web application to provide an API for receiving user messages, storing them in a MongoDB database, retrieving conversation history, and generating conversation suggestions based on the latest message.
+**Flask Application**: The code integrates with a Flask web application to provide an API for receiving user messages, storing them in a MongoDB database, retrieving conversation history, and generating conversation suggestions based on the latest message.
 
-MongoDB Database: The code assumes the presence of a MongoDB database named conversation_db and a collection named samples for storing conversation messages.
+**MongoDB Database**: The code assumes the presence of a MongoDB database named **conversation_db** and a collection named **samples** for storing conversation messages.
 
 ## Summary Generator:
 ### T5 & LoRA Fine tunning
