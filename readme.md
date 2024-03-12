@@ -7,7 +7,7 @@ This model is designed for sentiment analysis, specifically focusing on English 
 ## Suggestion Prediction:
 The provided code serves the purpose of generating conversation suggestions based on a given message using BERT (Bidirectional Encoder Representations from Transformers) model. Here's a short description of the requirements for this code:
 
-Transformers Library: The code requires the transformers library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
+**Transformers Library**: The code requires the transformers library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
 
 NLTK Data: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data using nltk.download('punkt').
 
