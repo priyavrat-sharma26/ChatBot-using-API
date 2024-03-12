@@ -13,7 +13,7 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertForNextSentencePrediction.from_pretrained('bert-base-uncased')
 
 
-df = pd.read_excel('sentences.xlsx')
+df = pd.read_excel('resources/suggestion_prediction/sentences.xlsx')
 sentences = df.iloc[:, 0].tolist()
 
 
