@@ -5,8 +5,21 @@
 This model is designed for sentiment analysis, specifically focusing on English text. It utilizes the DistilRoBERTa architecture, which is a distilled version of the RoBERTa model, known for its strong performance in natural language understanding tasks. The model is trained to classify text into various emotion categories, enabling it to determine the sentiment expressed in a given piece of text, whether it's positive, negative, neutral, or belongs to a specific emotional category.
 
 ## Suggestion Prediction:
-### Bert
-BertForNextSentencePrediction is a model designed for predicting whether one sentence follows another in a given context. This model is built on the BERT (Bidirectional Encoder Representations from Transformers) architecture, which is pre-trained on large corpora of text data. It is particularly useful for tasks like question answering, dialogue generation, and contextual understanding. Given a pair of sentences, the model predicts whether the second sentence logically follows the first one or not, making it valuable for generating suggestions or completing prompts in various natural language processing applications.
+The provided code serves the purpose of generating conversation suggestions based on a given message using BERT (Bidirectional Encoder Representations from Transformers) model. Here's a short description of the requirements for this code:
+
+**Transformers Library**: The code requires the **transformers** library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
+
+**NLTK Data**: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data using **nltk.download('punkt')**.
+
+**BertTokenizer and BertForNextSentencePrediction**: The code uses the **BertTokenizer** to tokenize input text and **BertForNextSentencePrediction** model to predict the likelihood of the next sentence given two input sentences. These components are loaded from the **transformers** library.
+
+**Data Source**: The code requires an Excel file named **sentences.xlsx** containing a list of sentences. These sentences serve as potential responses or continuations in a conversation.
+
+**Suggestion Convo Class**: The **suggestion_convo** class encapsulates the functionality for generating conversation suggestions. It contains methods to initialize the tokenizer and model, predict the probability of the next sentence given a message, and suggest conversations based on a given message.
+
+**Flask Application**: The code integrates with a Flask web application to provide an API for receiving user messages, storing them in a MongoDB database, retrieving conversation history, and generating conversation suggestions based on the latest message.
+
+**MongoDB Database**: The code assumes the presence of a MongoDB database named **conversation_db** and a collection named **samples** for storing conversation messages.
 
 ## Summary Generator:
 ### T5 & LoRA Fine tunning
