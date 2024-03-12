@@ -1,0 +1,9 @@
+SentencePiece
+datasets
+transformers
+peft
+torch
+nltk
+flask
+pymongo
+openpyxl
