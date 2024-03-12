@@ -4,6 +4,16 @@
 ### j-hartmann/emotion-english-distilroberta-base
 This model is designed for sentiment analysis, specifically focusing on English text. It utilizes the DistilRoBERTa architecture, which is a distilled version of the RoBERTa model, known for its strong performance in natural language understanding tasks. The model is trained to classify text into various emotion categories, enabling it to determine the sentiment expressed in a given piece of text, whether it's positive, negative, neutral, or belongs to a specific emotional category.
 
+The provided Python code requires certain dependencies to be installed for it to run successfully. Here's a brief overview of the requirements:
+
+**transformers**: This library is used for natural language processing tasks such as text classification, tokenization, and model loading. It can be installed using pip:
+
+pip install transformers
+
+**torch**: This library is used as a backend for the transformers library for computations involving neural networks. It can also be installed using pip:
+
+pip install torch
+
 ## Suggestion Prediction:
 The provided code serves the purpose of generating conversation suggestions based on a given message using BERT (Bidirectional Encoder Representations from Transformers) model. Here's a short description of the requirements for this code:
 
