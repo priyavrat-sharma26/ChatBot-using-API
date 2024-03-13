@@ -1,30 +1,21 @@
 {
 	"info": {
-		"_postman_id": "215c7d6a-940f-4558-b4a6-840881577c9a",
+		"_postman_id": "2e26b59d-b9db-49b5-991c-3a5776b444b4",
 		"name": "ChatBotCollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33156688"
 	},
 	"item": [
 		{
-			"name": "user_message",
+			"name": "conversationhistory",
 			"request": {
 				"auth": {
 					"type": "noauth"
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"message\": \"okay then\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/api/user_message",
+					"raw": "http://127.0.0.1:5000/api/conversation/conversation",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -35,6 +26,43 @@
 					"port": "5000",
 					"path": [
 						"api",
+						"conversation",
+						"conversation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_message",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message\": \"fine\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/conversation/user_message",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"conversation",
 						"user_message"
 					]
 				}
@@ -51,7 +79,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"message\": \"Thanks!\"}",
+					"raw": "{\"message\": \"ok sir, thanks!\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,7 +87,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/api/agent_message",
+					"raw": "http://127.0.0.1:5000/api/conversation/agent_message",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -70,6 +98,7 @@
 					"port": "5000",
 					"path": [
 						"api",
+						"conversation",
 						"agent_message"
 					]
 				}
@@ -77,7 +106,7 @@
 			"response": []
 		},
 		{
-			"name": "conversation",
+			"name": "get_sentiment",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -85,7 +114,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/api/conversation",
+					"raw": "http://127.0.0.1:5000/api/suggestion/suggestion",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -96,7 +125,49 @@
 					"port": "5000",
 					"path": [
 						"api",
-						"conversation"
+						"suggestion",
+						"suggestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_suggestion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_summary",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/summary/generate_summary",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"summary",
+						"generate_summary"
 					]
 				}
 			},
