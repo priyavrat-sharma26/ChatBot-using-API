@@ -5,6 +5,7 @@ from suggestion_prediction.suggestion_api import suggestion_bp
 from summary_generator.summary_generator_api import summary_bp
 
 
+
 app = Flask(__name__)
 
 
