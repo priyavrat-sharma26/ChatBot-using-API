@@ -1,11 +1,25 @@
 # LLM Module
 
-## Installation and setup
--Create a local environment through terminal by using: python -m venv .venv
--Activate the created environment: .venv\Scripts\activate
--Installing all libraries and dependencies to the environment from requiremnets.txt file:
- pip install -r .\requirements.txt
-- run the main file in src folder to run the flask app
+## Installation and Setup
+
+To set up the environment and run the Flask application, follow these steps:
+
+- **Create a Local Environment:**  
+  Use the following command in your terminal to create a local environment:
+python -m venv .venv
+
+
+- **Activate the Environment:**  
+Activate the created environment using the following command:
+.venv\Scripts\activate
+
+- **Install Dependencies:**  
+Install all required libraries and dependencies into the environment from the `requirements.txt` file:
+pip install -r requirements.txt
+
+
+- **Run the Flask App:**  
+Navigate to the `src` folder and run the main file to start the Flask application.
 
 
 ## Hugging Face for Sentiment Analysis:
