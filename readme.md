@@ -1,25 +1,44 @@
 # LLM Module
 
+## Installation and Setup
+
+To set up the environment and run the Flask application, follow these steps:
+
+- **Create a Local Environment:**  
+  Use the following command in your terminal to create a local environment:
+python -m venv .venv
+
+
+- **Activate the Environment:**  
+Activate the created environment using the following command:
+.venv\Scripts\activate
+
+- **Install Dependencies:**  
+Install all required libraries and dependencies into the environment from the `requirements.txt` file:
+pip install -r requirements.txt
+
+
+- **Run the Flask App:**  
+Navigate to the `src` folder and run the main file to start the Flask application.
+
+
 ## Hugging Face for Sentiment Analysis:
 ### j-hartmann/emotion-english-distilroberta-base
 This model is designed for sentiment analysis, specifically focusing on English text. It utilizes the DistilRoBERTa architecture, which is a distilled version of the RoBERTa model, known for its strong performance in natural language understanding tasks. The model is trained to classify text into various emotion categories, enabling it to determine the sentiment expressed in a given piece of text, whether it's positive, negative, neutral, or belongs to a specific emotional category.
 
 The provided Python code requires certain dependencies to be installed for it to run successfully. Here's a brief overview of the requirements:
 
-**transformers**: This library is used for natural language processing tasks such as text classification, tokenization, and model loading. It can be installed using pip:
+**transformers**: This library is used for natural language processing tasks such as text classification, tokenization, and model loading. 
 
-pip install transformers
+**torch**: This library is used as a backend for the transformers library for computations involving neural networks. 
 
-**torch**: This library is used as a backend for the transformers library for computations involving neural networks. It can also be installed using pip:
-
-pip install torch
 
 ## Suggestion Prediction:
 The provided code serves the purpose of generating conversation suggestions based on a given message using BERT (Bidirectional Encoder Representations from Transformers) model. Here's a short description of the requirements for this code:
 
 **Transformers Library**: The code requires the **transformers** library to be installed. This library provides pre-trained models for natural language understanding tasks like tokenization and next sentence prediction.
 
-**NLTK Data**: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data using **nltk.download('punkt')**.
+**NLTK Data**: NLTK (Natural Language Toolkit) is used for tokenization. The code downloads necessary NLTK data.
 
 **BertTokenizer and BertForNextSentencePrediction**: The code uses the **BertTokenizer** to tokenize input text and **BertForNextSentencePrediction** model to predict the likelihood of the next sentence given two input sentences. These components are loaded from the **transformers** library.
 
