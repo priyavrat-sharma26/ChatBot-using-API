@@ -16,25 +16,19 @@ def generate_summary():
         # Get dialogues from MongoDB collection
         dialogues = list(collection.find({}, {'_id': 0}))
  
-        # Prepare a list to store individual summaries
-        generated_summaries = []
+        messages = []
  
-        # Process each dialogue separately and generate summary
         for dialogue in dialogues:
             if dialogue.get("from") == "user":
-                # Start new dialogue
-                current_dialogue = [dialogue["message"]]
+                messages.append("User: " + dialogue["message"])
             elif dialogue.get("from") == "agent":
-                # Add agent message to current dialogue
-                current_dialogue.append("Agent: " + dialogue["message"])
-                # Generate summary for the current dialogue
-                generated_summary = summarize.generate_summary(current_dialogue)
-                # Append generated summary to the list
-                generated_summaries.append(generated_summary)
- 
-        # Join all summaries into a single string
-        final_summary = " ".join(generated_summaries)
- 
-        return jsonify({"summary": final_summary}), 200
+                messages.append("Agent: " + dialogue["message"])
+   
+        print(messages)      
+        generated_summary = summarize.generate_summary(messages)
+        
+        
+        
+        return jsonify({"summary": generated_summary}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
