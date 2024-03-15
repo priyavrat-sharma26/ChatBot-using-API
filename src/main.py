@@ -1,8 +1,8 @@
 from flask import Flask
-from conversation.conversation_api import conversation_bp
-from sentiment_analysis.sentiment_analysis_api import sentiment_bp
-from suggestion_prediction.suggestion_api import suggestion_bp
-from summary_generator.summary_generator_api import summary_bp
+from src.conversation.conversation_api import conversation_bp
+from src.sentiment_analysis.sentiment_analysis_api import sentiment_bp
+from src.suggestion_prediction.suggestion_api import suggestion_bp
+from src.summary_generator.summary_generator_api import summary_bp
 
 
 
