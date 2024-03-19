@@ -2,7 +2,8 @@ from setuptools import find_packages,setup
 from typing import List
 
 import os
-os.environ['JOBLIB_TEMP_FOLDER'] = '/tmp'
+
+os.environ['JOBLIB_TEMP_FOLDER'] = '/home/tmp'
 
 HYPEN_E_DOT='-e .'
 def get_requirements(file_path:str)->List[str]:
