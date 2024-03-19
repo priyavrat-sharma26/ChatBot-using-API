@@ -1,6 +1,6 @@
 # Import necessary libraries
 from transformers import BertTokenizer, BertForNextSentencePrediction
-import torch
+# import torch
 import nltk
 import pandas as pd
 
@@ -33,7 +33,8 @@ class suggestion_convo:
     def predict_next_sentence(self, sentence1, sentence2):
         tokens = self.tokenizer(sentence1, sentence2, return_tensors='pt')
         logits = self.model(**tokens).logits
-        probabilities = torch.softmax(logits, dim=1)
+        # probabilities = torch.softmax(logits, dim=1)
+        probabilities = logits
         next_sentence_probability = probabilities[:, 0].item()
         return next_sentence_probability
       
