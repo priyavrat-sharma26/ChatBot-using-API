@@ -12,8 +12,15 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertForNextSentencePrediction.from_pretrained('bert-base-uncased')
 
 # Read data from Excel file
-df = pd.read_excel('resources/suggestion_prediction/sentences.xlsx')
-sentences = df.iloc[:, 0].tolist()
+df = pd.read_excel('resources/suggestion_prediction/dataset.csv')
+# Drop unnecessary columns
+df.drop(['instruction', 'category'], axis='columns', inplace=True)
+
+# Extract unique intents
+intent = df['intent'].unique().tolist()
+
+# Group DataFrame by intent
+int_df = df.groupby('intent')
 
 # Define a class for suggesting conversations
 class suggestion_convo:
@@ -32,11 +39,17 @@ class suggestion_convo:
       
     # Function to suggest conversations based on a given message
     def suggest(self, message):
-        # Calculate probabilities for each sentence in the dataset
-        probabilities = [self.predict_next_sentence(message, i) for i in sentences]
-        # Combine probabilities with sentence indices
-        indexed_list = list(enumerate(probabilities))
-        # Sort sentences based on probabilities
+        # Calculate probabilities for each intent
+        probabilities = [self.predict_next_sentence(message, i) for i in intent]
+        # Get the index of the intent with maximum probability
+        index = probabilities.index(max(probabilities))
+        # Get responses related to the selected intent
+        sentences = int_df.get_group(intent[index]).head(25)['response'].tolist()
+        # Calculate probabilities for each response
+        prob = [self.predict_next_sentence(message, i) for i in sentences]
+        # Combine probabilities with response indices
+        indexed_list = list(enumerate(prob))
+        # Sort responses based on probabilities
         sorted_indices = sorted(indexed_list, key=lambda x: x[1], reverse=True)[:5]
         # Extract the top 5 suggestions
         largest_indices = [index for index, value in sorted_indices]
