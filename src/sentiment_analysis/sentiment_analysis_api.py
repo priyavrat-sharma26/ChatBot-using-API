@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from pymongo import MongoClient
 from .sentiment_analysis_model import SentimentAnalysis 
-from database_connection import db, collection 
+from src.database_connection import db, collection 
 sentiment_bp = Blueprint("sentiment", __name__)
  
  

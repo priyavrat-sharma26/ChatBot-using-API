@@ -4,7 +4,7 @@ from datetime import datetime
 from .suggestion_prediction_model import suggestion_convo
 import sys
 sys.path.append('./src')
-from database_connection import db, collection
+from src.database_connection import db, collection
 
 suggestion_bp = Blueprint("suggestion", __name__)
 
