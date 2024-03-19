@@ -12,7 +12,7 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertForNextSentencePrediction.from_pretrained('bert-base-uncased')
 
 # Read data from Excel file
-df = pd.read_excel('resources/suggestion_prediction/dataset.csv')
+df = pd.read_csv('resources/suggestion_prediction/dataset.csv')
 # Drop unnecessary columns
 df.drop(['instruction', 'category'], axis='columns', inplace=True)
 
