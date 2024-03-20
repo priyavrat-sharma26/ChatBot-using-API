@@ -776,6 +776,11 @@ button:focus {
     }
 }
 
-.f-20{
+.f-20 {
     font-size: 2rem;
+}
+
+#suggestion {
+    max-height: 60vh;
+    overflow-y: scroll;
 }

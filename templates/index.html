@@ -52,14 +52,8 @@
                                                         data-bs-toggle="dropdown" aria-expanded="false"><i
                                                             class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a>
-                                                        </li>
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="#">Something else
-                                                                here</a>
+                                                        <li><a class="dropdown-item" id="clear_btn" href="#">Clear
+                                                                Messages</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -71,45 +65,8 @@
 
                                 <div class="modal-body">
                                     <div class="msg-body">
-                                        <ul>
-                                            <li class="sender">
-                                                <p> Hey, Are you there? </p>
-                                                <span class="time">10:06 am</span>
-                                            </li>
-                                            <li class="sender">
-                                                <p> Hey, Are you there? </p>
-                                                <span class="time">10:16 am</span>
-                                            </li>
-                                            <li class="repaly">
-                                                <p>yes!</p>
-                                                <span class="time">10:20 am</span>
-                                            </li>
-                                            <li class="sender">
-                                                <p> Hey, Are you there? </p>
-                                                <span class="time">10:26 am</span>
-                                            </li>
-                                            <li class="sender">
-                                                <p> Hey, Are you there? </p>
-                                                <span class="time">10:32 am</span>
-                                            </li>
-                                            <li class="repaly">
-                                                <p>How are you?</p>
-                                                <span class="time">10:35 am</span>
-                                            </li>
-                                            <li>
-                                                <div class="divider">
-                                                    <h6>Today</h6>
-                                                </div>
-                                            </li>
+                                        <ul id="msg-body">
 
-                                            <li class="repaly">
-                                                <p> yes, tell me</p>
-                                                <span class="time">10:36 am</span>
-                                            </li>
-                                            <li class="repaly">
-                                                <p>yes... on it</p>
-                                                <span class="time">junt now</span>
-                                            </li>
 
                                         </ul>
                                     </div>
@@ -118,10 +75,11 @@
 
                                 <div class="send-box">
                                     <form action="">
-                                        <input type="text" class="form-control" aria-label="message…"
+                                        <input type="text" id="agent_message" class="form-control" aria-label="message…"
                                             placeholder="Write message…">
 
-                                        <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                        <button type="button" id="send_button"><i class="fa fa-paper-plane"
+                                                aria-hidden="true"></i>
                                             Send</button>
                                     </form>
 
@@ -135,23 +93,19 @@
             </div>
             <div class="col-4">
                 <div class="card">
-                    <div class="card-body">
-                        <i class="bi bi-emoji-smile-fill text-warning f-20 "></i>
+                    <div class="card-body" id="sentiment">
+
                     </div>
                 </div>
 
                 <div class="card mt-2">
                     <div class="card-header ">Summary</div>
-                    <div class="card-body">
-                        A simple secondary alert—check it out!
+                    <div class="card-body" id="summary">
                     </div>
                 </div>
-                <div class="card mt-2 h-100">
+                <div class="card mt-2 ">
                     <div class="card-header ">Next Best Action</div>
-                    <div class="card-body">
-                        <div class="alert alert-secondary" role="alert">
-                            A simple secondary alert—check it out!
-                        </div>
+                    <div class="card-body" id="suggestion">
                     </div>
                 </div>
 
