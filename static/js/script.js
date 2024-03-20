@@ -130,7 +130,15 @@ function fetchSuggetion() {
 
 }
 function clearMessages() {
-    alert("message cleared");
+    var requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+      
+      fetch(`${baseUrl}/conversation/clear_conversation`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 fetchMessages();

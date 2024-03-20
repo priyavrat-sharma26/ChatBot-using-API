@@ -47,3 +47,13 @@ def agent_message():
 def get_conversation():
     conversation = list(collection.find({}, {'_id': 0}))
     return jsonify(conversation), 200
+
+
+
+@conversation_bp.route('/clear_conversation', methods=['DELETE'])
+def clear_conversation():
+    try:
+        collection.delete_many({})  # Delete all documents in the collection
+        return jsonify({"status": "Conversation cleared"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

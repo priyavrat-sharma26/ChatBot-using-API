@@ -1,38 +1,11 @@
 {
 	"info": {
-		"_postman_id": "2e26b59d-b9db-49b5-991c-3a5776b444b4",
+		"_postman_id": "d46e1484-c3d8-477d-9b89-a8b536092f8a",
 		"name": "ChatBotCollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33156688"
+		"_exporter_id": "33579620"
 	},
 	"item": [
-		{
-			"name": "conversationhistory",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/api/conversation/conversation",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"conversation",
-						"conversation"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "user_message",
 			"request": {
@@ -106,7 +79,7 @@
 			"response": []
 		},
 		{
-			"name": "get_sentiment",
+			"name": "conversation_history",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -114,7 +87,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/api/suggestion/suggestion",
+					"raw": "http://127.0.0.1:5000/api/conversation/conversation",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -125,15 +98,42 @@
 					"port": "5000",
 					"path": [
 						"api",
-						"suggestion",
-						"suggestion"
+						"conversation",
+						"conversation"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get_suggestion",
+			"name": "clear_conversation",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/conversation/clear_conversation",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"conversation",
+						"clear_conversation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_sentiment",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -141,7 +141,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:5000/api/sentiment/sentiment",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sentiment",
+						"sentiment"
+					]
 				}
 			},
 			"response": []
@@ -168,6 +181,33 @@
 						"api",
 						"summary",
 						"generate_summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_suggestion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/suggestion/suggestion",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"suggestion",
+						"suggestion"
 					]
 				}
 			},
