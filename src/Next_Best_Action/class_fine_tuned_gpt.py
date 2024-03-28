@@ -2,7 +2,11 @@
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
  
 class NextBestActionPredictor:
-    def __init__(self, model_path, tokenizer_path="gpt2"):
+
+  
+
+    def __init__(self,  model_path  = "resources/Next_Best_Action/gpt2-fine-tuned",  tokenizer_path="gpt2"):
+
         """
         Initializes the predictor with the fine-tuned model and tokenizer.
        

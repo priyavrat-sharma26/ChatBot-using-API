@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from pymongo import MongoClient
 from datetime import datetime
 from src.database_connection import db, collection
+from src.Next_Best_Action.class_fine_tuned_gpt import NextBestActionPredictor
  
 conversation_bp = Blueprint("conversation", __name__)
  
@@ -57,3 +58,15 @@ def clear_conversation():
         return jsonify({"status": "Conversation cleared"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+ 
+ 
+action_predictor = NextBestActionPredictor()
+@conversation_bp.route('/next_best_action', methods=['POST'])
+def next_best_action():
+    data = request.json
+    if 'summary' not in data:
+        return jsonify({"error": "summary field missing"}), 400
+    message = data['summary']
+    next_action = action_predictor.predict_action(message)
+    return jsonify({"action": next_action}), 200

@@ -98,7 +98,7 @@ function fetchSummary() {
             result = JSON.parse(result);
             const div = document.getElementById('summary');
             div.innerHTML = result.summary;
-
+            getNextAction(result.summary);
         })
         .catch((error) => console.error(error));
 }
@@ -133,13 +133,52 @@ function clearMessages() {
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
-      };
-      
-      fetch(`${baseUrl}/conversation/clear_conversation`, requestOptions)
+    };
+
+    fetch(`${baseUrl}/conversation/clear_conversation`, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => fetchMessages())
         .catch(error => console.log('error', error));
 }
+
+function getNextAction(summary) {
+
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "summary": summary
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    fetch(`${baseUrl}/conversation/next_best_action`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+
+            result = JSON.parse(result);
+
+            let html = '';
+            html += `
+                <div class="alert alert-secondary" role="alert">
+                            ${result.action}
+                </div>
+                `;
+            const div = document.getElementById('next_best_action');
+            div.innerHTML = html;
+
+
+        })
+        .catch((error) => console.error(error));
+
+}
+
 
 fetchMessages();
 
@@ -153,9 +192,10 @@ clearBtn.addEventListener("click", clearMessages);
 
 window.addEventListener('load', function () {
     setInterval(fetchMessages, 5000);
-    setInterval(fetchSentiment, 15000);
-    setInterval(fetchSummary, 25000);
-    setInterval(fetchSuggetion, 150000);
+    setInterval(fetchSentiment, 6000);
+    setInterval(fetchSummary, 7000);
+    setInterval(fetchSuggetion, 5000);
+
 });
 
 
