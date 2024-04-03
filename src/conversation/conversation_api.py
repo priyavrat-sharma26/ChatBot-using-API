@@ -16,7 +16,7 @@ def user_message():
     message = data['message']
     timestamp = datetime.now().isoformat()
     conversation_item = {
-        'from': 'user',
+        'from': 'User',
         'message': message,
         'time': timestamp
     }
@@ -34,7 +34,7 @@ def agent_message():
     message = data['message']
     timestamp = datetime.now().isoformat()
     conversation_item = {
-        'from': 'agent',
+        'from': 'Agent',
         'message': message,
         'time': timestamp
     }
