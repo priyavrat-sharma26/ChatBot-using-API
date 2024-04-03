@@ -19,9 +19,9 @@ def generate_summary():
         messages = []
  
         for dialogue in dialogues:
-            if dialogue.get("from") == "user":
+            if dialogue.get("from") == "User":
                 messages.append("User: " + dialogue["message"])
-            elif dialogue.get("from") == "agent":
+            elif dialogue.get("from") == "Agent":
                 messages.append("Agent: " + dialogue["message"])
    
         print(messages)      
