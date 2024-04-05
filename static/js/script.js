@@ -130,7 +130,7 @@ function fetchSuggetion() {
 
 }
 function clearMessages() {
-    var requestOptions = {
+    const requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
@@ -190,13 +190,15 @@ const clearBtn = document.getElementById('clear_btn');
 clearBtn.addEventListener("click", clearMessages);
 
 
-window.addEventListener('load', function () {
-    setInterval(fetchMessages, 5000);
-    setInterval(fetchSentiment, 6000);
-    setInterval(fetchSummary, 7000);
-    setInterval(fetchSuggetion, 5000);
+setInterval(fetchMessages, 6000);
+setInterval(fetchSentiment, 10000);
 
-});
+const fetchSummaryBtn = document.getElementById('fetchSummary');
+fetchSummaryBtn.addEventListener("click", fetchSummary);
+
+const fetchPredicationBtn = document.getElementById('fetchPredication');
+fetchPredicationBtn.addEventListener("click", fetchSuggetion);
+
 
 
 
