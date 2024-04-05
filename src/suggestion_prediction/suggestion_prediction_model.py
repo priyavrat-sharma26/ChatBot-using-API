@@ -25,11 +25,9 @@ class suggestion_convo:
     # Function to predict the probability of the next sentence
     def predict_next_sentence(self, sentence1, sentence2):
         tokens = self.tokenizer(sentence1, sentence2, return_tensors='pt')
-        logits = self.model(**tokens).logits
+        probabilities = self.model(**tokens).logits
         # probabilities = torch.softmax(logits, dim=1)
-        probabilities = logits
-        next_sentence_probability = probabilities[:, 0].item()
-        return next_sentence_probability
+        return probabilities[:, 0].item()
       
     # Function to suggest conversations based on a given message
     def suggest(self, message):

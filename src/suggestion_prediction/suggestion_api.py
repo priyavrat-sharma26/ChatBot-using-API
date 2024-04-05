@@ -55,9 +55,15 @@ def get_conversation():
 # Initialize suggestion classifier
 classifier = suggestion_convo()
 
+data = list(collection.find({}, {'_id': 0}))
+last_user_message = None
+for message in data:
+    if message["from"] == "user":
+        if last_user_message is None or message["time"] > last_user_message["time"]:
+            last_user_message = message
+
 # Route to get suggestions based on the latest message
 @suggestion_bp.route('/suggestion', methods=['GET'])
 def get_suggestion():
-    data = list(collection.find({}, {'_id': 0}))
-    messg = data[-1]['message']  # Get the latest message from the conversation history
+    messg = last_user_message['message']  # Get the latest user message from the conversation history
     return jsonify(classifier.suggest(messg))
