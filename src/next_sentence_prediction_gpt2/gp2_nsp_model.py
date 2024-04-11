@@ -2,7 +2,7 @@ import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 class NextSentencePrediction():
-    def __init__(self, model_path = r"../../resources\next_sentence_prediction_gpt2\fine_tuned_gpt2"):
+    def __init__(self, model_path):
         self.model = GPT2LMHeadModel.from_pretrained(model_path)
         self.tokenizer = GPT2Tokenizer.from_pretrained(model_path)
     def generate_agent_responses(self,customer_input):
@@ -35,8 +35,3 @@ class NextSentencePrediction():
         text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
         agent_response = text.split(customer_input)[-1].split('Agent:')[1].strip()
         return agent_response
-
-customer_input = "Customer: Track my delivery"
-predictor = NextSentencePrediction()
-agent_response = predictor.generate_agent_responses(customer_input)
-print("Agent:", agent_response)

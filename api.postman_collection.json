@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d46e1484-c3d8-477d-9b89-a8b536092f8a",
+		"_postman_id": "0f3660e5-096f-4a69-9e6f-52222c925d94",
 		"name": "ChatBotCollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33579620"
+		"_exporter_id": "33395133"
 	},
 	"item": [
 		{
@@ -73,6 +73,42 @@
 						"api",
 						"conversation",
 						"agent_message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Best_action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"summary\":\"User wants to cancel his order.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/conversation/next_best_action",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"conversation",
+						"next_best_action"
 					]
 				}
 			},
@@ -208,6 +244,30 @@
 						"api",
 						"suggestion",
 						"suggestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "next_sentence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/next_sentence/next_sentence",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"next_sentence",
+						"next_sentence"
 					]
 				}
 			},

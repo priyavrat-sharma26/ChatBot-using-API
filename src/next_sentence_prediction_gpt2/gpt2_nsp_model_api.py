@@ -7,7 +7,7 @@ from database_connection import db, collection
 suggestion_gpt2_bp = Blueprint("suggestion_gpt2", __name__)
  
 # Instantiate dialoguesummarizer class (assuming it has a constructor)
-predictor = NextSentencePrediction()
+predictor = NextSentencePrediction(r"resources/next_sentence_prediction_gpt2/fine_tuned_gpt2")
  
 @suggestion_gpt2_bp.route('/next_sentence', methods=['GET'])
 def next_sentence():
@@ -21,7 +21,7 @@ def next_sentence():
                     last_user_message = message
 
            
-        next_sentence = predictor.generate_agent_responses(last_user_message)
+        next_sentence = predictor.generate_agent_responses(last_user_message["message"])
         return jsonify(next_sentence), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
