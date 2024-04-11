@@ -7,7 +7,7 @@ from database_connection import db, collection
 suggestion_gpt2_bp = Blueprint("suggestion_gpt2", __name__)
  
 # Instantiate dialoguesummarizer class (assuming it has a constructor)
-predictor = NextSentencePrediction(r"resources/next_sentence_prediction_gpt2/fine_tuned_gpt2")
+predictor = NextSentencePrediction(r"resources/next_sentence_prediction_gpt2/gpt2_finetuned")
  
 @suggestion_gpt2_bp.route('/next_sentence', methods=['GET'])
 def next_sentence():
