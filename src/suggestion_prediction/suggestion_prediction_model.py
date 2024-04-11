@@ -33,7 +33,7 @@ class suggestion_convo:
     def suggest(self, message):
         probabilities = [self.predict_next_sentence(message, i) for i in sentences]
         indexed_list = list(enumerate(probabilities))
-        sorted_indices = sorted(indexed_list, key=lambda x: x[1], reverse=True)[:5]
+        sorted_indices = sorted(indexed_list, key=lambda x: x[1], reverse=True)[:3]
         largest_indices = [index for index, value in sorted_indices]
         suggestions = [sentences[i] for i in largest_indices]
         return suggestions
