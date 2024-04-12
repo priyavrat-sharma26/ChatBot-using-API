@@ -98,7 +98,7 @@ function fetchSummary() {
             result = JSON.parse(result);
             const div = document.getElementById('summary');
             div.innerHTML = result.summary;
-            getNextAction(result.summary);
+            //getNextAction(result.summary);
         })
         .catch((error) => console.error(error));
 }
@@ -109,19 +109,16 @@ function fetchSuggetion() {
         redirect: "follow"
     };
 
-    fetch(`${baseUrl}suggestion/suggestion`, requestOptions)
+    fetch(`${baseUrl}next_sentence/next_sentence`, requestOptions)
         .then((response) => response.text())
         .then((result) => {
-            result = JSON.parse(result);
 
             let html = '';
-            for (let item of result) {
-                html += `
+            html += `
                 <div class="alert alert-secondary" role="alert">
-                            ${item}
+                            ${result}
                 </div>
                 `;
-            }
             const div = document.getElementById('suggestion');
             div.innerHTML = html;
         })
